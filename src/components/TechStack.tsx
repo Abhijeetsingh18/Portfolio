@@ -1,8 +1,7 @@
 import * as THREE from "three";
-import { useRef, useMemo, useState, useEffect } from "react";
+import { useRef, useMemo, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Environment } from "@react-three/drei";
-import { EffectComposer, N8AO } from "@react-three/postprocessing";
 import {
   BallCollider,
   Physics,
@@ -36,38 +35,43 @@ function createBallTexture(item: { name: string; icon: string; color: string }):
   const ctx = canvas.getContext("2d")!;
 
   const render = (img?: HTMLImageElement) => {
+    // Crisp white background for sphere
     ctx.fillStyle = "#ffffff";
     ctx.fillRect(0, 0, 1024, 512);
 
+    // Draw both front (cx: 256) and back (cx: 768) hemispheres
     [256, 768].forEach((cx) => {
+      // Circular badge background
       ctx.save();
       ctx.beginPath();
-      ctx.arc(cx, 225, 175, 0, Math.PI * 2);
-      ctx.fillStyle = "#f6f6fc";
+      ctx.arc(cx, 220, 160, 0, Math.PI * 2);
+      ctx.fillStyle = "#f5f4fa";
       ctx.fill();
-      ctx.strokeStyle = "rgba(0, 0, 0, 0.08)";
-      ctx.lineWidth = 4;
+      ctx.strokeStyle = item.color;
+      ctx.lineWidth = 8;
       ctx.stroke();
       ctx.restore();
 
+      // Icon image
       if (img && img.complete && img.naturalWidth > 0) {
-        const size = 210;
-        ctx.drawImage(img, cx - size / 2, 225 - size / 2, size, size);
+        const size = 200;
+        ctx.drawImage(img, cx - size / 2, 220 - size / 2, size, size);
       } else {
         ctx.save();
         ctx.beginPath();
-        ctx.arc(cx, 225, 80, 0, Math.PI * 2);
+        ctx.arc(cx, 220, 75, 0, Math.PI * 2);
         ctx.fillStyle = item.color;
         ctx.fill();
         ctx.restore();
       }
 
+      // Tech title text
       ctx.save();
-      ctx.font = "bold 44px 'Geist', -apple-system, sans-serif";
+      ctx.font = "bold 46px system-ui, -apple-system, sans-serif";
       ctx.fillStyle = item.color;
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
-      ctx.fillText(item.name.toUpperCase(), cx, 435);
+      ctx.fillText(item.name.toUpperCase(), cx, 430);
       ctx.restore();
     });
   };
@@ -76,8 +80,11 @@ function createBallTexture(item: { name: string; icon: string; color: string }):
 
   const texture = new THREE.CanvasTexture(canvas);
   texture.colorSpace = THREE.SRGBColorSpace;
+  texture.wrapS = THREE.RepeatWrapping;
+  texture.wrapT = THREE.ClampToEdgeWrapping;
 
   const image = new Image();
+  image.crossOrigin = "anonymous";
   image.onload = () => {
     render(image);
     texture.needsUpdate = true;
@@ -89,7 +96,7 @@ function createBallTexture(item: { name: string; icon: string; color: string }):
 
 const textures = typeof window !== "undefined" ? techList.map(createBallTexture) : [];
 
-const sphereGeometry = new THREE.SphereGeometry(1, 28, 28);
+const sphereGeometry = new THREE.SphereGeometry(1, 32, 32);
 
 const spheres = [...Array(30)].map((_, i) => ({
   scale: [0.75, 1, 0.85, 1.05, 0.95][i % 5],
@@ -100,8 +107,7 @@ type SphereProps = {
   vec?: THREE.Vector3;
   scale: number;
   r?: typeof THREE.MathUtils.randFloatSpread;
-  material: THREE.MeshPhysicalMaterial;
-  isActive: boolean;
+  material: THREE.Material;
 };
 
 function SphereGeo({
@@ -109,21 +115,19 @@ function SphereGeo({
   scale,
   r = THREE.MathUtils.randFloatSpread,
   material,
-  isActive,
 }: SphereProps) {
   const api = useRef<RapierRigidBody | null>(null);
 
   useFrame((_state, delta) => {
-    if (!isActive) return;
-    delta = Math.min(0.1, delta);
+    delta = Math.min(0.05, delta);
     const impulse = vec
       .copy(api.current!.translation())
       .normalize()
       .multiply(
         new THREE.Vector3(
-          -50 * delta * scale,
-          -150 * delta * scale,
-          -50 * delta * scale
+          -45 * delta * scale,
+          -90 * delta * scale,
+          -45 * delta * scale
         )
       );
 
@@ -132,10 +136,10 @@ function SphereGeo({
 
   return (
     <RigidBody
-      linearDamping={0.75}
+      linearDamping={0.65}
       angularDamping={0.15}
       friction={0.2}
-      position={[r(20), r(20) - 25, r(20) - 10]}
+      position={[r(12), r(10), r(8)]}
       ref={api}
       colliders={false}
     >
@@ -157,30 +161,24 @@ function SphereGeo({
   );
 }
 
-type PointerProps = {
-  vec?: THREE.Vector3;
-  isActive: boolean;
-};
-
-function Pointer({ vec = new THREE.Vector3(), isActive }: PointerProps) {
+function Pointer({ vec = new THREE.Vector3() }: { vec?: THREE.Vector3 }) {
   const ref = useRef<RapierRigidBody>(null);
 
   useFrame(({ pointer, viewport }) => {
-    if (!isActive) return;
     const targetVec = vec.lerp(
       new THREE.Vector3(
         (pointer.x * viewport.width) / 2,
         (pointer.y * viewport.height) / 2,
         0
       ),
-      0.2
+      0.25
     );
     ref.current?.setNextKinematicTranslation(targetVec);
   });
 
   return (
     <RigidBody
-      position={[100, 100, 100]}
+      position={[0, 0, 0]}
       type="kinematicPosition"
       colliders={false}
       ref={ref}
@@ -191,90 +189,58 @@ function Pointer({ vec = new THREE.Vector3(), isActive }: PointerProps) {
 }
 
 const TechStack = () => {
-  const [isActive, setIsActive] = useState(false);
-
-  useEffect(() => {
-    const target = document.getElementById("techstack");
-    if (!target) {
-      setIsActive(true);
-      return;
-    }
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsActive(entry.isIntersecting);
-      },
-      { threshold: 0.05 }
-    );
-    observer.observe(target);
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-
   const materials = useMemo(() => {
     if (textures.length === 0) {
       return [
-        new THREE.MeshPhysicalMaterial({
+        new THREE.MeshStandardMaterial({
           color: "#c2a4ff",
-          metalness: 0.1,
           roughness: 0.3,
+          metalness: 0.1,
         }),
       ];
     }
     return textures.map(
       (texture) =>
-        new THREE.MeshPhysicalMaterial({
+        new THREE.MeshStandardMaterial({
           map: texture,
-          emissive: "#ffffff",
-          emissiveMap: texture,
-          emissiveIntensity: 0.25,
-          metalness: 0.15,
-          roughness: 0.35,
-          clearcoat: 0.2,
+          roughness: 0.25,
+          metalness: 0.1,
         })
     );
   }, []);
 
   return (
     <div className="techstack" id="techstack">
-      <h2>My Techstack</h2>
+      <h2>
+        My <span>Techstack</span>
+      </h2>
 
       <Canvas
         shadows
-        gl={{ alpha: true, stencil: false, depth: false, antialias: false }}
-        camera={{ position: [0, 0, 20], fov: 32.5, near: 1, far: 100 }}
-        onCreated={(state) => (state.gl.toneMappingExposure = 1.5)}
+        gl={{ alpha: true, antialias: true }}
+        camera={{ position: [0, 0, 20], fov: 32.5, near: 0.1, far: 100 }}
         className="tech-canvas"
       >
-        <ambientLight intensity={1.2} />
-        <spotLight
-          position={[20, 20, 25]}
-          penumbra={1}
-          angle={0.2}
-          color="white"
-          castShadow
-          shadow-mapSize={[512, 512]}
-        />
-        <directionalLight position={[0, 5, -4]} intensity={2} />
+        <ambientLight intensity={1.5} />
+        <directionalLight position={[10, 15, 15]} intensity={1.8} castShadow />
+        <directionalLight position={[-10, -10, -5]} intensity={0.6} color="#c2a4ff" />
         <Physics gravity={[0, 0, 0]}>
-          <Pointer isActive={isActive} />
+          <Pointer />
           {spheres.map((props, i) => (
             <SphereGeo
               key={i}
               scale={props.scale}
               material={materials[props.techIndex % materials.length]}
-              isActive={isActive}
             />
           ))}
         </Physics>
-        <Environment
-          files="/models/char_enviorment.hdr"
-          environmentIntensity={0.5}
-          environmentRotation={[0, 4, 2]}
-        />
-        <EffectComposer enableNormalPass={false}>
-          <N8AO color="#0f002c" aoRadius={2} intensity={1.15} />
-        </EffectComposer>
+        <Suspense fallback={null}>
+          <Environment
+            files="/models/char_enviorment.hdr"
+            environmentIntensity={0.6}
+            environmentRotation={[0, 4, 2]}
+          />
+        </Suspense>
       </Canvas>
     </div>
   );
