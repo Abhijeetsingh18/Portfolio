@@ -18,13 +18,7 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-
-    "baseUrl": ".",
-    "paths": {
-      "gsap/ScrollSmoother": ["src/plugins/ScrollSmoother.d.ts"],
-      "gsap/SplitText": ["src/plugins/SplitText.d.ts"]
-    }
+    "noFallthroughCasesInSwitch": true
   },
   "include": ["src"]
 }
