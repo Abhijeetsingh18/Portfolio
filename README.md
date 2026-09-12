@@ -1,7 +1,7 @@
 # Abhijeet Singh — Personal Portfolio Website 🚀
 
-Welcome to the official repository for my personal portfolio website showcasing my software engineering projects, technical skills, certifications, and experience.)
-**Live Portfolio**: https://portfolio-two-dusky-35.vercel.app/)
+Welcome to the official repository for my personal portfolio website showcasing my software engineering projects, technical skills, certifications, and experience.
+**Live Portfolio**: https://portfolio-two-dusky-35.vercel.app/
 **GitHub Repository**: [https://github.com/Abhijeetsingh18/Portfolio](https://github.com/Abhijeetsingh18/Portfolio)  
 **Author**: Abhijeet Singh  
 **Role**: Java Full Stack Developer | Software Engineer  
