@@ -47,7 +47,7 @@ const projects = [
     image: "/images/project-grades.jpg",
   },
   {
-    title: "Full Stack Java Applications",
+    title: "Full Stack Java Application",
     category: "Full Stack Development / Web",
     tools: "Spring Boot, Hibernate, MySQL, JavaScript, Bootstrap",
     description:

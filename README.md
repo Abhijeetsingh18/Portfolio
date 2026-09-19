@@ -196,7 +196,7 @@ An interactive GUI application designed to manage student marks and generate aca
 
 ---
 
-### 🌐 5. Full Stack Java Web Applications
+### 🌐 5. Full Stack Java Application
 
 **Technologies:** `Java` `Spring Boot` `Hibernate` `MySQL` `JavaScript` `Bootstrap`
 
@@ -214,7 +214,8 @@ End-to-end web applications developed using the **Java Full Stack ecosystem**.
 
 These projects demonstrate my understanding of **backend development, database management, API integration, ORM, and responsive web development**.
 
-🔗 **[View Live Portfolio](https://portfolio-two-dusky-35.vercel.app/)**
+🔗 **[View Project on GitHub](https://github.com/Abhijeetsingh18)**  
+🌐 **[View Live Demo](https://portfolio-two-dusky-35.vercel.app/)**
 
 ---
 
