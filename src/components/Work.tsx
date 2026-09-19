@@ -53,7 +53,7 @@ const projects = [
     description:
       "End-to-end full stack web applications engineered during internship with Spring Framework, RESTful web services, Hibernate ORM, and responsive web design.",
     link: "https://github.com/Abhijeetsingh18",
-    liveLink: "https://client-phi-umber-99.vercel.app/",
+    liveLink: "https://portfolio-two-dusky-35.vercel.app/",
     image: "/images/project-fullstack.jpg",
   },
 ];
