@@ -88,11 +88,17 @@
 .work-info > p {
   width: 90%;
 }
+.project-links-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
 .project-github-link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-top: 14px;
   padding: 8px 16px;
   background: rgba(194, 164, 255, 0.1);
   border: 1px solid rgba(194, 164, 255, 0.3);
@@ -110,6 +116,28 @@
   border-color: var(--accentColor);
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(194, 164, 255, 0.3);
+}
+.project-live-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(85, 199, 144, 0.12);
+  border: 1px solid rgba(85, 199, 144, 0.4);
+  border-radius: 8px;
+  color: #55c790;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  width: fit-content;
+}
+.project-live-link:hover {
+  background: #55c790;
+  color: #0b090a;
+  border-color: #55c790;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(85, 199, 144, 0.35);
 }
 .work-image {
   display: flex;

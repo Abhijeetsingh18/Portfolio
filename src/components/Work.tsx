@@ -3,12 +3,22 @@ import WorkImage from "./WorkImage";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { MdArrowOutward } from "react-icons/md";
+import { MdArrowOutward, MdLaunch } from "react-icons/md";
 import { FaGithub } from "react-icons/fa6";
 
 gsap.registerPlugin(useGSAP);
 
 const projects = [
+  {
+    title: "Zamzam Mart E-Commerce Website",
+    category: "Full Stack E-Commerce / Web",
+    tools: "Java, Spring Boot, React, JavaScript, REST API, MySQL",
+    description:
+      "Full-stack grocery supermarket e-commerce platform with dynamic product catalogs, search, category filtering, cart management, and seamless responsive checkout.",
+    link: "https://github.com/Abhijeetsingh18/zamzammart-E-commerce-website-.git",
+    liveLink: "https://client-phi-umber-99.vercel.app/",
+    image: "/images/project-zamzam.jpg",
+  },
   {
     title: "Hospital Management System",
     category: "Desktop Application / Healthcare",
@@ -43,6 +53,7 @@ const projects = [
     description:
       "End-to-end full stack web applications engineered during internship with Spring Framework, RESTful web services, Hibernate ORM, and responsive web design.",
     link: "https://github.com/Abhijeetsingh18",
+    liveLink: "https://portfolio-two-dusky-35.vercel.app/",
     image: "/images/project-fullstack.jpg",
   },
 ];
@@ -115,17 +126,34 @@ const Work = () => {
                 <p style={{ marginTop: "12px", lineHeight: "1.5" }}>
                   {project.description}
                 </p>
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="project-github-link"
-                  data-cursor="disable"
-                >
-                  <FaGithub /> View Repository <MdArrowOutward />
-                </a>
+                <div className="project-links-group">
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="project-github-link"
+                    data-cursor="disable"
+                  >
+                    <FaGithub /> View Repository <MdArrowOutward />
+                  </a>
+                  {project.liveLink && (
+                    <a
+                      href={project.liveLink}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="project-live-link"
+                      data-cursor="disable"
+                    >
+                      <MdLaunch /> Live Demo <MdArrowOutward />
+                    </a>
+                  )}
+                </div>
               </div>
-              <WorkImage image={project.image} alt={project.title} link={project.link} />
+              <WorkImage
+                image={project.image}
+                alt={project.title}
+                link={project.liveLink || project.link}
+              />
             </div>
           ))}
         </div>

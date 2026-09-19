@@ -48,7 +48,7 @@ I have practical exposure to **Java Full Stack Development**, working with techn
 I enjoy building applications that combine **clean code, efficient problem-solving, responsive interfaces, and reliable backend systems**.
 
 - 🎓 **B.Tech:** Computer Science & Engineering
-- 🏫 **Institute:** Axis Institute of Technology and Management, Kanpur
+- 🏫 **Institute:** Axis Institute Of Technology and Management , Kanpur
 - 📅 **Duration:** 2023 – 2027
 - 💼 **Experience:** Java Full Stack Intern — EduSkills Academy
 - 📅 **Internship:** 2026
@@ -119,7 +119,27 @@ I enjoy building applications that combine **clean code, efficient problem-solvi
 
 ## 📂 Featured Projects
 
-### 🏥 1. Hospital Management System
+### 🛒 1. Zamzam Mart E-Commerce Website
+
+**Technologies:** `Java` `Spring Boot` `React` `JavaScript` `REST API` `MySQL`
+
+A full-stack grocery supermarket e-commerce platform engineered with a robust Spring Boot backend, REST APIs, and a modern responsive React frontend. Features dynamic product catalogs, category filtering, cart management, and seamless checkout.
+
+### Key Features
+
+- 🛍️ Dynamic product catalog & categorization
+- 🔍 Fast product search & filtering
+- 🛒 Real-time cart management & order flow
+- ⚡ Responsive UI built with React & modern styling
+- ⚙️ Spring Boot RESTful API services
+- 🗄️ Relational data persistence with MySQL
+
+🔗 **[View Project on GitHub](https://github.com/Abhijeetsingh18/zamzammart-E-commerce-website-.git)**  
+🌐 **[View Live Demo](https://client-phi-umber-99.vercel.app/)**
+
+---
+
+### 🏥 2. Hospital Management System
 
 **Technologies:** `Java` `Swing` `AWT` `JDBC` `MySQL`
 
@@ -139,7 +159,7 @@ A desktop-based hospital management application designed to manage patient recor
 
 ---
 
-### 📈 2. Stock Trading Platform
+### 📈 3. Stock Trading Platform
 
 **Technologies:** `Java` `OOP` `File I/O` `Data Persistence`
 
@@ -157,7 +177,7 @@ A virtual stock portfolio application built using **Object-Oriented Programming 
 
 ---
 
-### 🎓 3. Student Grade Tracker
+### 🎓 4. Student Grade Tracker
 
 **Technologies:** `Java` `Swing` `OOP` `ArrayList`
 
@@ -176,7 +196,7 @@ An interactive GUI application designed to manage student marks and generate aca
 
 ---
 
-### 🌐 4. Full Stack Java Web Applications
+### 🌐 5. Full Stack Java Web Applications
 
 **Technologies:** `Java` `Spring Boot` `Hibernate` `MySQL` `JavaScript` `Bootstrap`
 
@@ -193,6 +213,8 @@ End-to-end web applications developed using the **Java Full Stack ecosystem**.
 - 🎨 Bootstrap UI components
 
 These projects demonstrate my understanding of **backend development, database management, API integration, ORM, and responsive web development**.
+
+🔗 **[View Live Portfolio](https://portfolio-two-dusky-35.vercel.app/)**
 
 ---
 
@@ -212,3 +234,13 @@ Hibernate & MySQL
 Java Full Stack Development
         ↓
 Building Real-World Applications
+```
+
+---
+
+## 📬 Connect With Me
+
+- 🌐 **Live Portfolio:** [https://portfolio-two-dusky-35.vercel.app/](https://portfolio-two-dusky-35.vercel.app/)
+- 💼 **LinkedIn:** [linkedin.com/in/abhijeet-singh26](https://linkedin.com/in/abhijeet-singh26)
+- 🐙 **GitHub:** [github.com/Abhijeetsingh18](https://github.com/Abhijeetsingh18)
+- 📧 **Email:** [abhijeetsingh0260@gmail.com](mailto:abhijeetsingh0260@gmail.com)
