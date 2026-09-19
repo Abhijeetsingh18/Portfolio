@@ -3,7 +3,7 @@
 ### 💻 Java Full Stack Developer | Software Engineer
 
 <p align="left">
-  <a href="https://portfolio-two-dusky-35.vercel.app/">
+  <a href="https://client-phi-umber-99.vercel.app/">
     <img src="https://img.shields.io/badge/🌐_Live_Portfolio-Visit_Now-000000?style=for-the-badge" alt="Live Portfolio"/>
   </a>
   <a href="https://github.com/Abhijeetsingh18">
@@ -32,7 +32,7 @@ The portfolio highlights my:
 ### 🌐 Explore My Portfolio
 
 <p align="center">
-  <a href="https://portfolio-two-dusky-35.vercel.app/">
+  <a href="https://client-phi-umber-99.vercel.app/">
     <img src="https://img.shields.io/badge/🔗_VIEW_LIVE_PORTFOLIO-Click_Here-success?style=for-the-badge" alt="View Live Portfolio"/>
   </a>
 </p>
@@ -214,7 +214,7 @@ End-to-end web applications developed using the **Java Full Stack ecosystem**.
 
 These projects demonstrate my understanding of **backend development, database management, API integration, ORM, and responsive web development**.
 
-🔗 **[View Live Portfolio](https://portfolio-two-dusky-35.vercel.app/)**
+🔗 **[View Live Portfolio](https://client-phi-umber-99.vercel.app/)**
 
 ---
 
@@ -240,7 +240,7 @@ Building Real-World Applications
 
 ## 📬 Connect With Me
 
-- 🌐 **Live Portfolio:** [https://portfolio-two-dusky-35.vercel.app/](https://portfolio-two-dusky-35.vercel.app/)
+- 🌐 **Live Portfolio:** [https://client-phi-umber-99.vercel.app/](https://client-phi-umber-99.vercel.app/)
 - 💼 **LinkedIn:** [linkedin.com/in/abhijeet-singh26](https://linkedin.com/in/abhijeet-singh26)
 - 🐙 **GitHub:** [github.com/Abhijeetsingh18](https://github.com/Abhijeetsingh18)
 - 📧 **Email:** [abhijeetsingh0260@gmail.com](mailto:abhijeetsingh0260@gmail.com)
